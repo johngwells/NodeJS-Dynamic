@@ -11,6 +11,7 @@
   "author": "John Wells",
   "license": "ISC",
   "devDependencies": {
+    "ejs": "^3.1.6",
     "nodemon": "^1.18.3"
   },
   "dependencies": {
