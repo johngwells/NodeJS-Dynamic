@@ -2,15 +2,35 @@
 <html lang="en">
 
 <head>
-    <%- include('../partials/head.ejs') %>
+  <%- include('../partials/head.ejs') %>
     <link rel="stylesheet" href="/css/forms.css">
     <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
-    <header class="main-header">
-        <%- include('../partials/navigation.ejs') %>
-    </header>
+  <header class="main-header">
+    <%- include('../partials/navigation.ejs') %>
+  </header>
+
+  <main>
+    <% if (products.length> 0) { %>
+      <ul>
+        <% products.forEach(p => { %>
+          <li>
+            <p>
+              <%= p.productData.title %> (<%= p.qty %>)
+            </p>
+            <form action="/cart-delete-item" method="POST">
+              <input type="hidden" value="<%= p.productData.id %>" name="productId">
+              <button class="btn" type="submit">Delete</button>
+            </form>
+          </li>
+          <% }) %>
+      </ul>
+      <% } else { %>
+        <p>No Products in Cart!</p>
+      <% } %>
+  </main>
 </body>
 
 </html>
